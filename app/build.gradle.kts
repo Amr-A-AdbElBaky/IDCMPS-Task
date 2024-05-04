@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.jetbrains.kotlin.kapt)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -53,7 +55,12 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.hilt.android)
     implementation(libs.androidx.appcompat)
-    annotationProcessor(libs.hilt.compiler)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    kapt(libs.hilt.compiler)
+    implementation(libs.hilt.android)
+   // kapt(libs.androidx.hilt.compiler)
+    implementation(project(":idcmps-listing"))
 }
