@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/universities_navigation"
+    app:startDestination="@+id/universitiesFragment">
+
+
+    <fragment
+
+        android:id="@+id/universitiesFragment"
+        android:name="com.example.idcmps_listing.presentation.ui.UniversitiesFragment"
+        android:label="Universities Screen"
+        tools:layout="@layout/fragment_universities_list" >
+    <!--    <action
+            android:id="@+id/action_naphiesDependentSettingFragment_to_naphiesConsentFragment"
+            app:destination="@id/naphiesConsentFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"/>-->
+    </fragment>
+
+<!--    <fragment
+        android:id="@+id/naphiesConsentFragment"
+        android:name="com.lean.sehhaty.features.healthSummary.ui.naphiesConsent.NaphiesConsentFragment"
+        tools:layout="@layout/fragment_naphies_consent">
+
+        <argument android:name="allDependent"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument android:name="dependentNationalId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+
+    </fragment>-->
+
+</navigation>
