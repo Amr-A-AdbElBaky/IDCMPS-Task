@@ -9,6 +9,8 @@ buildscript {
 
     dependencies {
         classpath(libs.hilt.android.gradle.plugin)
+        classpath(libs.navigation.safe.args.gradle.plugin)
+
     }
 }
 plugins {
@@ -17,5 +19,6 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.kapt) apply false
     alias(libs.plugins.android.library).apply(false)
     alias(libs.plugins.hilt).apply(false)
+  //  id("androidx.navigation.safeargs")
 
 }

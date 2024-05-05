@@ -22,3 +22,5 @@ dependencyResolutionManagement {
 rootProject.name = "IDCMPS"
 include(":app")
 include(":idcmps-listing")
+include(":core")
+include(":idcmps-details")
