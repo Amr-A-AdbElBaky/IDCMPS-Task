@@ -37,8 +37,8 @@ class ListItemAdapter(
     
     class LabDiffCallback : DiffUtil.ItemCallback<UniversityUIModel>() {
         override fun areItemsTheSame(oldItem: UniversityUIModel, newItem: UniversityUIModel) =
-            oldItem.id == newItem.id
+            oldItem.universityName == newItem.universityName
         override fun areContentsTheSame(oldItem: UniversityUIModel, newItem: UniversityUIModel) =
-            oldItem.id == newItem.id
+            oldItem.universityName == newItem.universityName
     }
 }

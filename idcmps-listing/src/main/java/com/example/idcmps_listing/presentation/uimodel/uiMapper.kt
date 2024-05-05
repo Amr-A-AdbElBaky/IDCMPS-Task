@@ -4,7 +4,7 @@ import com.example.idcmps_listing.domain.entity.UniversityEntity
 
 
 fun UniversityEntity.toUI() = UniversityUIModel(
-    id= id,
+    code= code,
     universityName = name,
-    universityState = state,
+    universityState = state?:"",
 )
