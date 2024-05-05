@@ -10,11 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.idcmps_listing.core.presentation.uimodel.BaseListUIModel
 import com.example.idcmps_listing.databinding.FragmentUniversitiesListBinding
-import com.example.idcmps_listing.presentation.uimodel.ItemUIModel
-import com.example.idcmps_listing.presentation.viewmodel.ListViewModel
+import com.example.idcmps_listing.presentation.uimodel.UniversityUIModel
+import com.example.idcmps_listing.presentation.viewmodel.UniversitiesListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -23,10 +24,10 @@ import kotlinx.coroutines.launch
 class UniversitiesFragment : Fragment() {
 
     private var binding: FragmentUniversitiesListBinding? = null
-    private val mViewModel: ListViewModel by viewModels()
+    private val mViewModel: UniversitiesListViewModel by viewModels()
     private val mAdapter by lazy {
         ListItemAdapter(
-            ::clickSingleLabTest
+            ::clickSingleUniversity
         )
     }
 
@@ -43,18 +44,15 @@ class UniversitiesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpUiViews()
         observeUiViews()
-    }
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         mViewModel.requestUniversities()
     }
 
     private fun setUpUiViews() = binding?.apply {
         setupRecyclerView()
+        layoutError.viewPartnersButton.setOnClickListener {
+            mViewModel.requestUniversities()
+        }
     }
-
 
 
     private fun setupRecyclerView() {
@@ -77,42 +75,17 @@ class UniversitiesFragment : Fragment() {
 
     }
 
-    private fun handleUiState(state: BaseListUIModel<ItemUIModel>) {
+    private fun handleUiState(state: BaseListUIModel<UniversityUIModel>) {
         mAdapter.submitList(state.data)
         binding?.apply {
             pbLoading.isVisible = state.loading
-            layoutError.root.isVisible = state.error!= null
+            layoutError.root.isVisible = state.error != null
         }
     }
 
 
-    fun clickSingleLabTest(uiModel: ItemUIModel) {
-//        if (viewModel.getLabDetailsFlag.not()) return
-//        if (true) return // Need to remove when details is finished.
-/*        val type = UiNormalLabTest.mapType("lab.interpretationStatus")
-        mNavController.navigateToDeepLink(DeepLinkDestination.EntryMyLabsCategories)*/
-
-        /*      goToScreen(
-                  LabFragmentDirections.actionNavLabCategory(
-                      null
-             *//*         ParamLabDetailsModel(
-                    testCode = "lab.testCode",
-                    normalRange = "lab.normalReferenceRange",
-                    testName = "lab.testName",
-                    testType = type.ordinal,
-                    testUnit = "lab.resultUnit",
-                    testValue = "lab.resultValue",
-                    resultReading = "lab.interpretation",
-                    testDate = "lab.resultDate",
-                    testNameEn = "lab.testNameEn",
-                    isGraphable = *//**//*lab.isGraphable ?:*//**//* true,
-                    requestedDate = "lab.requestDate",
-                    interpretation = "lab.interpretation",
-                    yAxisMin = *//**//*lab.graphInfo?.yMin*//**//*null,
-                    yAxisMax = *//**//*lab.graphInfo?.yMax*//**//* null,
-                )*//*
-            )
-        )*/
+    private fun clickSingleUniversity(uiModel: UniversityUIModel) {
+        findNavController().navigate(UniversitiesFragmentDirections.actionDetailsFragment(uiModel.universityName))
     }
 
 

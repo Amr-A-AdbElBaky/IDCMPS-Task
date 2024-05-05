@@ -6,11 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.idcmps_listing.databinding.ItemListBinding
-import com.example.idcmps_listing.presentation.uimodel.ItemUIModel
+import com.example.idcmps_listing.presentation.uimodel.UniversityUIModel
 
 class ListItemAdapter(
-    private val clickTest: (mainLab: ItemUIModel) -> Unit,
-): ListAdapter<ItemUIModel, ListItemAdapter.NormalTestViewHolder>(LabDiffCallback()) {
+    private val clickTest: (mainLab: UniversityUIModel) -> Unit,
+): ListAdapter<UniversityUIModel, ListItemAdapter.NormalTestViewHolder>(LabDiffCallback()) {
     
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NormalTestViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -25,7 +25,7 @@ class ListItemAdapter(
     
     inner class NormalTestViewHolder(private val binding: ItemListBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(
-            item: ItemUIModel,
+            item: UniversityUIModel,
         ) = binding.run {
             with(item){
                 tvUniversityName.text = universityName
@@ -35,10 +35,10 @@ class ListItemAdapter(
         }
     }
     
-    class LabDiffCallback : DiffUtil.ItemCallback<ItemUIModel>() {
-        override fun areItemsTheSame(oldItem: ItemUIModel, newItem: ItemUIModel) =
+    class LabDiffCallback : DiffUtil.ItemCallback<UniversityUIModel>() {
+        override fun areItemsTheSame(oldItem: UniversityUIModel, newItem: UniversityUIModel) =
             oldItem.id == newItem.id
-        override fun areContentsTheSame(oldItem: ItemUIModel, newItem: ItemUIModel) =
+        override fun areContentsTheSame(oldItem: UniversityUIModel, newItem: UniversityUIModel) =
             oldItem.id == newItem.id
     }
 }

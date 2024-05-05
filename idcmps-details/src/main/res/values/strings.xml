@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">IDCMPS-Listing</string>
+    <string name="msg_something_went_wrong">Something went wrong</string>
+    <string name="label_retry">Retry</string>
+    <string name="label_university_name">University Name:</string>
+    <string name="label_state">State:</string>
+    <string name="label_country">Country:</string>
+    <string name="label_code">Code:</string>
+    <string name="label_website">Website</string>
+</resources>

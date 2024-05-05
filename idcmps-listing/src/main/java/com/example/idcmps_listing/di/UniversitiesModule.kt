@@ -12,5 +12,5 @@ import dagger.hilt.android.components.ViewModelComponent
 abstract class UniversitiesModule {
 
     @Binds
-    abstract fun bindAddVitalSignsRemote(repo: UniversitiesRepositoryImp): UniversitiesRepository
+    abstract fun bindUniversitiesRepository(repo: UniversitiesRepositoryImp): UniversitiesRepository
 }
