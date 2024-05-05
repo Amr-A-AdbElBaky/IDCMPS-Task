@@ -5,13 +5,6 @@ import com.example.idcmps_listing.data.model.UniversityResponse
 import com.example.idcmps_listing.domain.entity.UniversityEntity
 
 fun UniversityResponse.toEntity() = UniversityEntity(
-    id = alphaTwoCode,
-    name = name,
-    state = country,
-
-    )
-
-fun UniversityResponse.toDao() = UniversityDto(
     code = alphaTwoCode,
     name = name,
     state = stateProvince ?: "",
@@ -19,11 +12,26 @@ fun UniversityResponse.toDao() = UniversityDto(
     webPage = webPages.firstOrNull()?:"",
     domain = domains.firstOrNull()?:""
 
+
+)
+
+fun UniversityEntity.toDao() = UniversityDto(
+    code = code,
+    name = name,
+    state = state ?: "",
+    country = country,
+    webPage = webPage,
+    domain = domain
+
 )
 
 fun UniversityDto.toEntity() = UniversityEntity(
-    id = code,
+    code = code,
     name = name,
-    state = country,
+    state = state,
+    country = country,
+    webPage = webPage,
+    domain = domain
+
 
     )
